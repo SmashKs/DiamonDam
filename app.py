@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_restplus import Resource
 
-from rest_api.apis import api
 from rest_api.config import DevConfig
+from rest_api.v1.apis import api
 
 app = Flask(__name__)
 
