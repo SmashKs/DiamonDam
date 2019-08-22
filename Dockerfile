@@ -8,4 +8,4 @@ WORKDIR /diamon-dam
 RUN pip install -r requirements.txt
 EXPOSE 8888
 ENTRYPOINT ["python"]
-CMD ["flask-docker.py"]
+CMD ["app.py"]
