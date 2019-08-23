@@ -1,11 +1,10 @@
-FROM ubuntu:16.04
-LABEL MAINTAINER Jieyi<pokkbaby@gmail.com>
-
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
-ADD . /diamon-dam
-WORKDIR /diamon-dam
+FROM python:3.7.4-slim-buster
+WORKDIR /code
+ENV FLASK_APP app.py
+ENV FLASK_RUN_HOST 0.0.0.0
+#RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-EXPOSE 8888
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+COPY . .
+#CMD ["python3", "app.py"]
+CMD ["flask", "run"]

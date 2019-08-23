@@ -1,18 +1,30 @@
-version: '3.5'
+version: "3.7"
 
-server:
-  build: .
-  ports:
-    - "5000:5000"
-  volumns:
-    - .:/code
-  links:
-    - mongo
-  depends_on:
-    - mongo
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+    links:
+      - mongo
+      - redis
+    environment:
+      FLASK_ENV: development
+      PYTHONUNBUFFERED: 1
+    depends_on:
+      - mongo
+      - redis
 
-mongo:
-  image: mongo:latest
-  container_name: "mongodb"
-  ports:
-    - "54153:54153"
+  mongo:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+      - "7192:7192"
+
+  redis:
+    image: redis:latest
+    container_name: "redis"
+    ports:
+      - "8174:8174"
