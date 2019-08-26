@@ -1,6 +1,6 @@
 from flask import Config, Flask
 
-from rest_api.apis import api
+from rest_api.v1.apis import api
 
 
 def create_app(conf: Config) -> Flask:
