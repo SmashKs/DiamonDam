@@ -1,12 +1,20 @@
-from flask_restplus import Resource
+from flask_pymongo import PyMongo
 
-from rest_api import api, create_app
+from rest_api import create_app
 from rest_api.config import DevConfig
+from rest_api.v1.controllers.test import test
 
 app = create_app(DevConfig)
 
+app.register_blueprint(test, url_prefix='/test')
+mongo = PyMongo(app)
 
-@api.route('/<string:id>')
-class HelloWorld(Resource):
-    def get(self, id):
-        return {id: 'world'}
+print('debug ->', app.url_map)
+print('debug ->', mongo)
+
+# r = redis.Redis(host='localhost', port=8174)
+
+# @app.route('/<string:id>')
+# class HelloWorld(Resource):
+#     def get(self, id):
+#         return {id: '321'}
