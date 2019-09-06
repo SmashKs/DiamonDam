@@ -2,15 +2,11 @@ from flask_pymongo import PyMongo
 
 from rest_api import create_app
 from rest_api.config import DevConfig
-from rest_api.v1.controllers.test import test
 
 app = create_app(DevConfig)
 
-app.register_blueprint(test, url_prefix='/test')
-mongo = PyMongo(app)
-
 print('debug ->', app.url_map)
-print('debug ->', mongo)
+c_mongo = PyMongo(app)
 
 # r = redis.Redis(host='localhost', port=8174)
 

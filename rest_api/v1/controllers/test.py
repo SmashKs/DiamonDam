@@ -1,20 +1,18 @@
-from flask_restplus import Resource
+from flask import Blueprint
 
-from diamondam import mongo
-from rest_api.v1.controllers import test
+test = Blueprint('test.api', __name__)
 
 
-@test.route('/ttt/<string:id>')
-class Fun(Resource):
-    def get(self, id):
-        print('debug ->', mongo)
-        # collection = client.db
-        # print('debug ->', collection)
-        # student = {
-        #     'id': '20170101',
-        #     'name': 'Jordan',
-        #     'age': 20,
-        #     'gender': 'male'
-        # }
-        # collection.insert(student)
-        return '1231421'
+@test.route('/ttt')
+def test123():
+    # print('debug ->', c_mongo)
+    # collection = client.db
+    # print('debug ->', collection)
+    student = {
+        'id': '20170101',
+        'name': 'Jordan',
+        'age': 20,
+        'gender': 'male'
+    }
+    # collection.insert(student)
+    return student
