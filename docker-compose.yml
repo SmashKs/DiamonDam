@@ -16,15 +16,18 @@ services:
     depends_on:
       - mongo
       - redis
+    restart: always
 
   mongo:
     image: mongo:latest
     container_name: "mongodb"
+    restart: always
     ports:
       - "7192:27017"
 
   redis:
     image: redis:latest
     container_name: "redis"
+    restart: always
     ports:
       - "8174:6379"
